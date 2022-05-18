@@ -1,0 +1,17 @@
+targets:
+  $default:
+    builders:
+      graphql_codegen:
+        options:
+          scopes:
+            - lib/graphql/**
+          clients:
+            - graphql
+            - graphql_flutter
+          scalars:
+            Date:
+              type: int
+            ApiID:
+              type: int
+            Cursor:
+              type: String

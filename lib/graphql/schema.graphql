@@ -1,0 +1,231 @@
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+type Account {
+  id: ID!
+  provider: String!
+  type: String
+  providerAccountId: String!
+  access_token: String!
+  expires_at: String!
+  refresh_token: String
+  refresh_token_expires_in: Int
+  token_type: String
+  id_token: String
+  scope: String
+  userId: String
+  name: String
+  email: String
+}
+
+"""IDs of TheTVDB models"""
+scalar ApiID
+
+type Artwork {
+  id: ApiID!
+  image: String!
+  thumbnail: String!
+  type: Int!
+  score: [Int!]!
+}
+
+type Character {
+  id: ApiID!
+  name: String!
+  image: String!
+}
+
+"""Pagination Cursor"""
+scalar Cursor
+
+"""Timestamp/Date"""
+scalar Date
+
+type Episode {
+  id: ApiID!
+  seriesId: ApiID!
+  name: String!
+  overview: String!
+  aired: String
+  runtime: Int
+  image: String!
+  isMovie: Int!
+  number: Int!
+  seasonNumber: Int!
+  special: Boolean!
+  important: Boolean!
+  due: Boolean!
+}
+
+type Genre {
+  id: ApiID!
+  name: String!
+  slug: String!
+}
+
+type List {
+  id: ID!
+  name: String!
+  slug: String!
+  public: Boolean!
+  primary: Boolean!
+  userId: ID!
+  user: User!
+  shows: [ListEntry!]!
+}
+
+type ListEntry {
+  id: ApiID!
+  addedAt: Date!
+  show: Show!
+}
+
+type Mutation {
+  addToList(shows: [ApiID!]!, slug: String, primary: Boolean): List!
+  removeFromList(shows: [ApiID!]!, slug: String, primary: Boolean): List!
+  setWatched(show: ApiID!, episodes: [ApiID!]!): Progress!
+}
+
+type Network {
+  id: ApiID!
+  name: String!
+  slug: String!
+  abbreviation: String!
+  country: String!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: Cursor
+  endCursor: Cursor
+}
+
+input PaginationInput {
+  after: Cursor
+  first: Int
+  before: Cursor
+  last: Int
+}
+
+type Progress {
+  id: ID!
+  userId: ID!
+  showId: ApiID!
+  show: Show!
+  user: User!
+  watched: [ApiID!]!
+  episodes: [Episode!]
+}
+
+type ProgressConnection {
+  totalCount: Int!
+  pageInfo: PageInfo!
+  edges: [ProgressEdge!]!
+}
+
+type ProgressEdge {
+  node: Progress!
+  cursor: Cursor!
+}
+
+type Query {
+  getOwnLists: [List!]!
+  getListsOf(user: ID!): [List!]!
+  getOwnList(slug: String!): List!
+  getListOf(slug: String!, user: ID!): List!
+  getList(id: ID!): List!
+  isInList(show: ApiID!, slug: String, primary: Boolean): Boolean!
+  getProgressesOf(user: ID!, input: PaginationInput): ProgressConnection!
+  getOwnProgresses(input: PaginationInput): ProgressConnection!
+  getProgressOf(show: ApiID!, user: ID!): Progress
+  getOwnProgress(show: ApiID!): Progress
+  getShow(id: ApiID!): Show!
+  searchShows(by: String!, limit: Int, offset: Int): [Show!]!
+  getUsers(input: PaginationInput): UserConnection!
+  getUser(id: ID!): User!
+  self: User!
+}
+
+type Season {
+  id: ApiID!
+  seriesId: String!
+  name: String
+  overview: String
+  number: Int!
+  image: String!
+  network: Network!
+  episodes: [Episode!]!
+  type: SeasonType!
+}
+
+type SeasonType {
+  id: String!
+  name: String!
+  type: String!
+}
+
+type Settings {
+  visibility: VisiblitySettings!
+}
+
+type Show {
+  id: ApiID!
+  name: String!
+  slug: String!
+  image: String
+  thumbnail: String
+  first_air_time: String
+  next_air_time: String
+  year: String
+  score: String
+  status: Status!
+  overview: String!
+  originalNetwork: Network!
+  episodes: [Episode!]!
+  seasons: [Season!]!
+  characters: [Character!]!
+  genres: [Genre!]!
+  networks: [Network!]!
+  isIn(slug: String, primary: Boolean): Boolean
+  progress: Progress
+}
+
+type Status {
+  name: String!
+  recordType: String
+  keepUpdated: Boolean
+}
+
+type User {
+  id: ID!
+  name: String!
+  joinedAt: Date!
+  email: String!
+  image: String
+  emailVerified: Boolean!
+  seeded: Boolean
+  settings: Settings!
+  accounts: [Account!]!
+}
+
+type UserConnection {
+  totalCount: Int!
+  pageInfo: PageInfo!
+  edges: [UserEdge!]!
+}
+
+type UserEdge {
+  node: User!
+  cursor: Cursor!
+}
+
+type VisiblitySettings {
+  profile: Boolean!
+  progress: Boolean!
+  favourites: Boolean!
+}
+

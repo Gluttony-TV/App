@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "graphql:schema": "get-graphql-schema https://gluttony.macarena.ceo/api/graphql > lib/graphql/schema.graphql",
+    "graphql:codegen": "dart run build_runner build",
+    "graphql": "yarn graphql:schema && yarn graphql:codegen"
+  },
+  "devDependencies": {
+    "get-graphql-schema": "^2.1.2"
+  }
+}
