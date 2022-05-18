@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gluttony_app/config.dart';
 import 'package:gluttony_app/hooks/useSession.dart';
-import 'package:gluttony_app/shared/Layout.dart';
+import 'package:gluttony_app/widgets/Layout.dart';
 import 'package:webview_cookie_manager/webview_cookie_manager.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

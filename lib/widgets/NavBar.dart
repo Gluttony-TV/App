@@ -16,15 +16,18 @@ class NavBar extends HookWidget {
 
   static const routes = [
     NavBarRoute(icon: Icons.home, label: 'Home', path: '/'),
-    NavBarRoute(icon: Icons.login, label: 'Watched', path: '/watched'),
+    NavBarRoute(icon: Icons.search, label: 'Search', path: '/search'),
+    NavBarRoute(icon: Icons.movie, label: 'Watched', path: '/watched'),
+    NavBarRoute(icon: Icons.star, label: 'Rate', path: '/rate'),
     NavBarRoute(icon: Icons.person, label: 'Profile', path: '/profile'),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final currentRoute = ModalRoute.of(context)?.settings.name;
-    final selected =
-        useMemoized(() => routes.indexWhere((r) => r.path == currentRoute));
+    final selected = useMemoized(
+        () => routes.indexWhere((r) => r.path == currentRoute), [currentRoute]);
 
     final items = useMemoized(
         () => routes
@@ -38,6 +41,10 @@ class NavBar extends HookWidget {
     }
 
     return BottomNavigationBar(
-        onTap: onTap, currentIndex: max(selected, 0), items: items);
+        onTap: onTap,
+        selectedItemColor: theme.colorScheme.primary,
+        currentIndex: max(selected, 0),
+        type: BottomNavigationBarType.fixed,
+        items: items);
   }
 }

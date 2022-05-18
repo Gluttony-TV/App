@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:gluttony_app/graphql/queries/query.graphql.dart';
 
 class UserIcon extends StatelessWidget {
@@ -17,6 +16,9 @@ class UserIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(user.image ?? gravatarUrl);
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(5.0),
+      child: Image.network(user.image ?? gravatarUrl),
+    );
   }
 }
