@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:gluttony_app/hooks/useSession.dart';
-import 'package:gluttony_app/widgets/Layout.dart';
+import 'package:gluttony_app/hooks/session.dart';
+import 'package:gluttony_app/widgets/layout.dart';
 
 class WelcomeScreen extends HookWidget {
   const WelcomeScreen({super.key});

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:gluttony_app/hooks/useSession.dart';
-import 'package:gluttony_app/screens/404.dart';
+import 'package:gluttony_app/hooks/api_provider.dart';
+import 'package:gluttony_app/hooks/session.dart';
 import 'package:gluttony_app/screens/home.dart';
 import 'package:gluttony_app/screens/lists.dart';
 import 'package:gluttony_app/screens/login.dart';
+import 'package:gluttony_app/screens/notfound.dart';
 import 'package:gluttony_app/screens/profile.dart';
 import 'package:gluttony_app/screens/rate.dart';
 import 'package:gluttony_app/screens/search.dart';
@@ -15,7 +16,6 @@ import 'package:gluttony_app/screens/users.dart';
 import 'package:gluttony_app/screens/watched.dart';
 import 'package:gluttony_app/themes/dark.dart';
 import 'package:gluttony_app/themes/light.dart';
-import 'package:gluttony_app/widgets/ApiProvider.dart';
 
 void main() async {
   runApp(const SessionProvider(child: ApiProvider(child: GluttonyApp())));
@@ -48,7 +48,6 @@ class GluttonyApp extends HookWidget {
         });
   }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gluttony_app/graphql/queries/user.graphql.dart';
-import 'package:gluttony_app/widgets/Layout.dart';
+import 'package:gluttony_app/widgets/layout.dart';
 
 class SettingsScreen extends HookWidget {
   const SettingsScreen({super.key});

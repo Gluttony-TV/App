@@ -36,6 +36,7 @@ class SessionProvider extends HookWidget {
       storage.read(key: 'token').then((value) {
         token.value = value;
       });
+      return null;
     }, [storage]);
 
     final setToken =

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:gluttony_app/hooks/useSession.dart';
+import 'package:gluttony_app/hooks/session.dart';
 
 class LogoutButton extends HookWidget {
   const LogoutButton({super.key});

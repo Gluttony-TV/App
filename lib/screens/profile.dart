@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gluttony_app/graphql/queries/user.graphql.dart';
-import 'package:gluttony_app/widgets/Layout.dart';
-import 'package:gluttony_app/widgets/LogoutButton.dart';
-import 'package:gluttony_app/widgets/ProfileButtons.dart';
-import 'package:gluttony_app/widgets/UserIcon.dart';
+import 'package:gluttony_app/widgets/layout.dart';
+import 'package:gluttony_app/widgets/logout_button.dart';
+import 'package:gluttony_app/widgets/profile_buttons.dart';
+import 'package:gluttony_app/widgets/user_icon.dart';
 
 class ProfileScreen extends HookWidget {
   const ProfileScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gluttony_app/graphql/queries/show.graphql.dart';
-import 'package:gluttony_app/widgets/DragableCard.dart';
+import 'package:gluttony_app/widgets/dragable_card.dart';
 
 class RateCards extends HookWidget {
   final Fragment$baseShow show1;

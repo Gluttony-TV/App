@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gluttony_app/config.dart';
-import 'package:gluttony_app/hooks/useSession.dart';
+import 'package:gluttony_app/hooks/session.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class ApiProvider extends HookWidget {
   final Widget child;
 
-  const ApiProvider({super.key, required Widget this.child});
+  const ApiProvider({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gluttony_app/graphql/queries/lists.graphql.dart';
-import 'package:gluttony_app/widgets/Layout.dart';
+import 'package:gluttony_app/widgets/layout.dart';
 
 class ListsScreen extends HookWidget {
   const ListsScreen({super.key});

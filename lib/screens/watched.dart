@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gluttony_app/graphql/queries/watched.graphql.dart';
 import 'package:gluttony_app/screens/show.dart';
-import 'package:gluttony_app/widgets/Layout.dart';
+import 'package:gluttony_app/widgets/layout.dart';
 
 class WatchedScreen extends HookWidget {
   const WatchedScreen({super.key});

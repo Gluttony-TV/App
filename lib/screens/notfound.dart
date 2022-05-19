@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:gluttony_app/widgets/Layout.dart';
+import 'package:gluttony_app/widgets/layout.dart';
 
 class NotFound extends StatelessWidget {
   const NotFound({super.key});

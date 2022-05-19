@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gluttony_app/graphql/queries/show.graphql.dart';
 import 'package:gluttony_app/graphql/queries/watched.graphql.dart';
-import 'package:gluttony_app/widgets/Layout.dart';
-import 'package:gluttony_app/widgets/RateCards.dart';
+import 'package:gluttony_app/widgets/layout.dart';
+import 'package:gluttony_app/widgets/rate_cards.dart';
 
 class RateScreen extends HookWidget {
   const RateScreen({super.key});
@@ -26,6 +26,7 @@ class RateScreen extends HookWidget {
 
     useEffect(() {
       reload();
+      return null;
     }, const []);
 
     if (cards.value.length < 2) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:gluttony_app/hooks/useSession.dart';
-import 'package:gluttony_app/widgets/NavBar.dart';
+import 'package:gluttony_app/hooks/session.dart';
+import 'package:gluttony_app/widgets/nav_bar.dart';
 
 class Layout extends HookWidget {
   final Widget body;
