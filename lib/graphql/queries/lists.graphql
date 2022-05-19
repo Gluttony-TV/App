@@ -1,0 +1,12 @@
+fragment baseList on List {
+  id
+  name
+  slug
+  userId
+}
+
+query lists {
+  lists: getOwnLists {
+    ...baseList
+  }
+}

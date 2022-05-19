@@ -1,0 +1,61 @@
+fragment baseShow on Show {
+   id
+   name
+   overview
+   image
+   thumbnail
+   year
+   status {
+      name
+   }
+}
+
+fragment baseEpisode on Episode {
+   id
+   name
+   aired
+   runtime
+   isMovie
+   number
+   seasonNumber
+   special
+   due
+}
+
+fragment baseSeason on Season {
+   id
+   name
+   number
+   type {
+      type
+      name
+   }
+}
+
+fragment withEpisodes on Show {
+   episodes {
+      ...baseEpisode
+   }
+}
+
+fragment withSeasons on Show {
+   ...baseShow
+   seasons {
+      ...baseSeason
+      episodes {
+         ...baseEpisode
+      }
+   }
+}
+
+query show($id: ApiID!) {
+   show: getShow(id: $id) {
+      ...withSeasons
+   }
+}
+
+query search($by: String!) {
+   results: searchShows(by: $by) {
+      ...baseShow
+   }
+}

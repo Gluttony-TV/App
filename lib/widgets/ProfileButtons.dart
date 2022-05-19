@@ -11,11 +11,18 @@ class ProfileButtons extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 16.0),
         child: Column(children: [
           TextButton.icon(
-              onPressed: () => Navigator.pushNamed(context, '/lists'),
+              onPressed: () => Navigator.pushNamed(context, '/profile/lists'),
               icon: const Icon(Icons.list),
               style: ElevatedButton.styleFrom(
                   minimumSize: Size.fromHeight(theme.height)),
-              label: const Text('List'))
+              label: const Text('List')),
+          TextButton.icon(
+              onPressed: () =>
+                  Navigator.pushNamed(context, '/profile/settings'),
+              icon: const Icon(Icons.settings),
+              style: ElevatedButton.styleFrom(
+                  minimumSize: Size.fromHeight(theme.height)),
+              label: const Text('Settings'))
         ]));
   }
 }

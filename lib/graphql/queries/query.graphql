@@ -1,9 +1,0 @@
-query self {
-  self {
-    id
-    name
-    email
-    joinedAt
-    image
-  }
-}

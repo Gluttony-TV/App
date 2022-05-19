@@ -1,0 +1,66 @@
+fragment baseUser on User {
+   id
+   name
+   joinedAt
+   email
+   seeded
+   image
+   settings {
+      visibility {
+         profile
+         progress
+         favourites
+      }
+   }
+}
+
+fragment baseAccount on Account {
+   id
+   provider
+   name
+}
+
+query user($id: ID!) {
+   user: getUser(id: $id) {
+      ...baseUser
+   }
+}
+
+query userWatched($id: ID!) {
+   user: getUser(id: $id) {
+      ...baseUser
+   }
+   watched: getProgressesOf(user: $id) {
+      pageInfo {
+         ...Forwards
+      }
+      edges {
+         node {
+            ...progressWithShow
+         }
+      }
+   }
+}
+
+query users($after: Cursor) {
+   users: getUsers(input: { after: $after }) {
+      totalCount
+      pageInfo {
+         ...Forwards
+      }
+      edges {
+         node {
+            ...baseUser
+         }
+      }
+   }
+}
+
+query self {
+   user: self {
+      ...baseUser
+      accounts {
+         ...baseAccount
+      }
+   }
+}

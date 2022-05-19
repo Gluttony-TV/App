@@ -3,11 +3,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gluttony_app/hooks/useSession.dart';
 import 'package:gluttony_app/screens/404.dart';
 import 'package:gluttony_app/screens/home.dart';
+import 'package:gluttony_app/screens/lists.dart';
 import 'package:gluttony_app/screens/login.dart';
 import 'package:gluttony_app/screens/profile.dart';
 import 'package:gluttony_app/screens/rate.dart';
 import 'package:gluttony_app/screens/search.dart';
+import 'package:gluttony_app/screens/settings.dart';
 import 'package:gluttony_app/themes/dark.dart';
+import 'package:gluttony_app/themes/light.dart';
 import 'package:gluttony_app/widgets/ApiProvider.dart';
 
 void main() async {
@@ -21,6 +24,8 @@ class GluttonyApp extends HookWidget {
     '/': (context) => const WelcomeScreen(),
     '/login': (context) => LoginScreen(),
     '/profile': (context) => const ProfileScreen(),
+    '/profile/lists': (context) => const ListsScreen(),
+    '/profile/settings': (context) => const SettingsScreen(),
     '/rate': (context) => const RateScreen(),
     '/search': (context) => const SearchScreen(),
   };
@@ -40,7 +45,8 @@ class GluttonyApp extends HookWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Gluttony',
-      theme: darkTheme,
+      theme: lightTheme,
+      darkTheme: darkTheme,
       onGenerateRoute: generateRoute,
       //routes: routes,
       initialRoute: '/',

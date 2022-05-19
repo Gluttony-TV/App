@@ -1,0 +1,9 @@
+fragment Forwards on PageInfo {
+   hasNextPage
+   endCursor
+}
+
+fragment Backwards on PageInfo {
+   hasPreviousPage
+   startCursor
+}

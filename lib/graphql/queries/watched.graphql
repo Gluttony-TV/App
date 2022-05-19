@@ -1,0 +1,53 @@
+fragment baseProgress on Progress {
+   id
+   watched
+   showId
+   userId
+}
+
+fragment progressWithShow on Progress {
+   ...baseProgress
+   show {
+      ...baseShow
+   }
+}
+
+query watched($after: Cursor, $amount: Int) {
+   progresses: getOwnProgresses(input: { first: $amount, after: $after }) {
+      pageInfo {
+         hasNextPage
+         endCursor
+      }
+      edges {
+         cursor
+         node {
+            ...progressWithShow
+         }
+      }
+   }
+}
+
+query watchedEpisodes {
+   progresses: getOwnProgresses {
+      edges {
+         node {
+            ...progressWithShow
+            show {
+               ...withEpisodes
+            }
+         }
+      }
+   }
+}
+
+query progress($show: ApiID!) {
+   progress: getOwnProgress(show: $show) {
+      ...baseProgress
+   }
+}
+
+mutation setWatched($show: ApiID!, $episodes: [ApiID!]!) {
+   setWatched(show: $show, episodes: $episodes) {
+      ...baseProgress
+   }
+}

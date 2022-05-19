@@ -25,9 +25,11 @@ class NavBar extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final currentRoute = ModalRoute.of(context)?.settings.name;
+    final currentRoute = ModalRoute.of(context)?.settings.name ?? '';
+    final parentRoute = "/${currentRoute.split('/')[1]}";
+
     final selected = useMemoized(
-        () => routes.indexWhere((r) => r.path == currentRoute), [currentRoute]);
+        () => routes.indexWhere((r) => parentRoute == r.path), [currentRoute]);
 
     final items = useMemoized(
         () => routes
