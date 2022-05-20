@@ -47,3 +47,6 @@ app.*.map.json
 /android/app/release
 
 node_modules/
+
+/lib/graphql/**/*.graphql.g.dart
+/lib/graphql/**/*.graphql.dart
